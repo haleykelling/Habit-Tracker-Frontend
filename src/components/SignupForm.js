@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 
 const usersUrl = "http://localhost:3000/users"
 
-const SignupForm = ({toggleForm}) => {
+const SignupForm = ({toggleForm, setUser}) => {
     const [input, setInput] = useState({})
+    const [alerts, setAlerts] = useState([])
+
 
     const handleInput = (event) => {
         setInput({
@@ -22,7 +24,20 @@ const SignupForm = ({toggleForm}) => {
             },
             body: JSON.stringify({user: input})
         })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setUser(response.user)
+                localStorage.setItem('token', response.token)
+                if(response.errors){
+                    setAlerts(response.errors)
+                } else {
+                    setAlerts([])
+                }
+            })
     }
+
+    const showAlerts = () => alerts.map(alert => <p>{alert}</p>)
     
     return (
         <form onSubmit={handleSubmit}>
@@ -43,6 +58,7 @@ const SignupForm = ({toggleForm}) => {
                 <input type="password" name="password" onChange={handleInput} />
             </div>
             <input type="submit" value="Create User"/>
+            { alerts.length ? showAlerts() : null }
             <p>Already a member? <button onClick={toggleForm}>Log In</button></p>
         </form>
     );

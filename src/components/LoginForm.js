@@ -25,11 +25,12 @@ const LoginForm = ({toggleForm, setUser}) => {
             body: JSON.stringify({user: input})
         })
             .then(response => response.json())
-            .then(result => {
-                setUser(result.user)
-                localStorage.setItem('token', result.token)
-                if(result.errors){
-                    setAlerts(result.errors)
+            .then(response => {
+                console.log(response)
+                setUser(response.user)
+                localStorage.setItem('token', response.token)
+                if(response.errors){
+                    setAlerts(response.errors)
                 } else {
                     setAlerts([])
                 }
