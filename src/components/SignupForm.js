@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 
 const usersUrl = "http://localhost:3000/users"
 
-const SignupForm = ({setUser, history}) => {
+const SignupForm = ({setUser, setHabits, history}) => {
     const [input, setInput] = useState({})
     const [alerts, setAlerts] = useState([])
 
+    useEffect(() => {
+        localStorage.removeItem('token')
+        setUser({})
+    }, [])
 
     const handleInput = (event) => {
         setInput({
@@ -19,6 +23,7 @@ const SignupForm = ({setUser, history}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         signUp(input)
+        setInput({})
     }
     
     const signUp = (user) => {
@@ -35,6 +40,7 @@ const SignupForm = ({setUser, history}) => {
                     setAlerts(response.errors)
                 } else {
                     setUser(response.user)
+                    setHabits(response.habits)
                     localStorage.setItem('token', response.token)
                     setAlerts([])
                     history.push('/')

@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 const loginUrl = "http://localhost:3000/login"
 
-const LoginForm = ({setUser, history}) => {
+const LoginForm = ({setUser, setHabits, history}) => {
     
     const [input, setInput] = useState({})
     const [alerts, setAlerts] = useState([])
+
+    useEffect(() => {
+        localStorage.removeItem('token')
+        setUser({})
+    }, [])
 
     const handleInput = (event) => {
         setInput({
@@ -18,6 +23,7 @@ const LoginForm = ({setUser, history}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         login(input)
+        setInput({})
     }
     
     const login = (user) => {
@@ -26,7 +32,7 @@ const LoginForm = ({setUser, history}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({user: input})
+            body: JSON.stringify({user: user})
         })
             .then(response => response.json())
             .then(response => {
@@ -34,6 +40,7 @@ const LoginForm = ({setUser, history}) => {
                     setAlerts(response.errors)
                 } else {
                     setUser(response.user)
+                    setHabits(response.habits)
                     localStorage.setItem('token', response.token)
                     setAlerts([])
                     history.push('/')
