@@ -4,8 +4,7 @@ import CreateNewHabit from '../components/CreateNewHabit'
 import HabitStats from '../components/HabitStats'
 import HabitContainer from '../components/HabitContainer'
 
-const Dashboard = ({user, habits, setHabits}) => {
-    console.log(habits)
+const Dashboard = ({user, habits, addHabit, deleteHabit}) => {
     return(
         <div>
             <div className="header">
@@ -15,9 +14,9 @@ const Dashboard = ({user, habits, setHabits}) => {
                 <h1>Welcome Back to Habit Tracker {user.name}</h1>
             </div>
             <div>
-                <CreateNewHabit />
+                <CreateNewHabit addHabit={addHabit}/>
                 <HabitStats habits={habits}/>
-                <HabitContainer habits={habits}/>
+                <HabitContainer habits={habits} deleteHabit={deleteHabit} />
             </div>
         </div>
     )

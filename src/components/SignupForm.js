@@ -23,6 +23,7 @@ const SignupForm = ({setUser, setHabits, history}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         signUp(input)
+        setInput({})
     }
     
     const signUp = (user) => {

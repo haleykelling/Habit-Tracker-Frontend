@@ -23,6 +23,7 @@ const LoginForm = ({setUser, setHabits, history}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         login(input)
+        setInput({})
     }
     
     const login = (user) => {
