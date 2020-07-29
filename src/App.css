@@ -1,38 +1,134 @@
-.App {
+@import '../node_modules/reset-css/reset.css';
+@import 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@200;400;700&display=swap';
+
+
+.app-name {
+  color: white;
+  font-size: 50px;
+  font-weight: 200;
+  margin: 1.5rem;
+}
+
+.description-of-app {
+  color: white;
+  margin: 1.5rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+}
+
+.quote-block {
+  width: 40vw;
+  height: 25vh;
+  background-color: hsl(2, 30%, 65%, 0.75);
+  margin: auto;
+  margin-top: 4rem;
+  padding: 2rem;
+  border-radius: 3px;
+}
+
+.quote{
   text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  line-height: 2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.aristotle{
+  text-align: right;
+  color: white;
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.call-to-action{
+  background-color: white;
+  color: hsl(215, 45%, 20%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0.8rem;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px hsl(215, 45%, 20%);
+  margin-left: 42vw;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.4s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.call-to-action:hover{
+  transform: scale(1.05);
+}
+
+.call-to-action:active{
+  outline: none;
+}
+
+.login, .signup {
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  width: 325px;
+  height: 300px;
+  background-color: hsl(2, 30%, 65%, 0.9);
+  margin: auto;
+  margin-top: 8rem;
+  padding: 2rem;
+  border-radius: 3px;
 }
 
-.App-link {
-  color: #61dafb;
+.login h2, .signup h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login input, .signup input {
+  margin-left: 0.5rem;
+  width: 50%;
+  border-style: none;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login label, .signup label{
+  font-size: 18px;
+}
+
+.submit{
+  align-self: center;
+  background: white;
+  border-style: none;
+  padding: 0.4rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px hsl(215, 45%, 20%);
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.submit:hover{
+  transform: scale(1.05);
+}
+
+.login p, .signup p {
+  align-self: center;
+}
+
+.login a, .signup a {
+  text-decoration: none;
+  color: hsl(215, 45%, 20%);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.login a:hover, .signup a:hover {
+  color: hsl(215, 40%, 40%);
 }

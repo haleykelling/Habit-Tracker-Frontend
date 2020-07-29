@@ -4,18 +4,18 @@ import CreateNewHabit from '../components/CreateNewHabit'
 import HabitStats from '../components/HabitStats'
 import HabitContainer from '../components/HabitContainer'
 
+import '../Dashboard.css';
+
 const Dashboard = ({user, habits, addHabit, deleteHabit}) => {
     return(
-        <div>
+        <div className="dashboard">
             <div className="header">
-                <nav>
-                <Link to="/login">Logout</Link>
-                </nav>
-                <h1>Welcome Back to Habit Tracker {user.name}</h1>
+                <Link to="/welcome"><button>Logout</button></Link>
+                <h1>Welcome Back {user.name}</h1>
             </div>
-            <div>
+            <HabitStats habits={habits}/>
+            <div className="habit-section">
                 <CreateNewHabit addHabit={addHabit}/>
-                <HabitStats habits={habits}/>
                 <HabitContainer habits={habits} deleteHabit={deleteHabit} />
             </div>
         </div>

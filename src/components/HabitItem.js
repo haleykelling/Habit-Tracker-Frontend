@@ -1,5 +1,8 @@
 import React from 'react';
 
+import '../Dashboard.css';
+
+
 const HabitItem = ({habit, deleteHabit}) => {
     
     const handleClick = (event) => {
@@ -8,7 +11,7 @@ const HabitItem = ({habit, deleteHabit}) => {
     }
     
     return (
-        <div>
+        <div className="habit-card">
             <h2>{habit.name}</h2>
             <p>{habit.details}</p>
             <p>Current Streak: {habit.current_streak}</p>

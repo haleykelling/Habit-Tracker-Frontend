@@ -3,7 +3,8 @@ import {Route, Switch, Redirect, Link} from 'react-router-dom';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Dashboard from './pages/Dashboard';
-import PrivateRoute from './components/PrivateRoute'
+import Welcome from './pages/Welcome';
+import PrivateRoute from './components/PrivateRoute';
 
 import './App.css';
 
@@ -71,6 +72,7 @@ function App() {
           addHabit={addHabit}
           deleteHabit={deleteHabit} 
         />
+        <Route exact path="/welcome" render={() => <Welcome />} />
         <Route exact path="/login" render={(routerProps) => {
           return <LoginForm setUser={setUser} setHabits={setHabits} {...routerProps} /> 
         }} />

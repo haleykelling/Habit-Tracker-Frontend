@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import HabitStats from './HabitStats';
+
+import '../Dashboard.css';
+
 
 const CreateNewHabit = ({addHabit}) => {
     
@@ -23,9 +25,9 @@ const CreateNewHabit = ({addHabit}) => {
     
     return (
         <>
-        <button onClick={toggleForm}>+</button>
+        <button className="show-form-button" onClick={toggleForm}>+</button>
         {form
-        ?   <form onSubmit={handleSubmit}>
+        ?   <form className="create-form" onSubmit={handleSubmit}>
                 <h2>Create a New Habit</h2>
                 <div>
                     <label>Name:</label>
