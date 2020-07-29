@@ -17,7 +17,10 @@ const LoginForm = ({setUser, history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        
+        login(input)
+    }
+    
+    const login = (user) => {
         fetch(loginUrl, {
             method: 'POST',
             headers: {
@@ -27,19 +30,18 @@ const LoginForm = ({setUser, history}) => {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
-                setUser(response.user)
-                localStorage.setItem('token', response.token)
                 if(response.errors){
                     setAlerts(response.errors)
                 } else {
+                    setUser(response.user)
+                    localStorage.setItem('token', response.token)
                     setAlerts([])
+                    history.push('/')
                 }
             })
-            .then(() => history.push('/'))
     }
 
-    const showAlerts = () => alerts.map(alert => <p>{alert}</p>)
+    const showAlerts = () => alerts.map(alert => <p className="alerts">{alert}</p>)
     
     return (
         <form onSubmit={handleSubmit}>

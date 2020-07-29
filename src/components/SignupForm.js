@@ -18,29 +18,31 @@ const SignupForm = ({setUser, history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        
+        signUp(input)
+    }
+    
+    const signUp = (user) => {
         fetch(usersUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({user: input})
+            body: JSON.stringify({user})
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
-                setUser(response.user)
-                localStorage.setItem('token', response.token)
                 if(response.errors){
                     setAlerts(response.errors)
                 } else {
+                    setUser(response.user)
+                    localStorage.setItem('token', response.token)
                     setAlerts([])
+                    history.push('/')
                 }
             })
-            .then(() => history.push('/'))
     }
 
-    const showAlerts = () => alerts.map(alert => <p>{alert}</p>)
+    const showAlerts = () => alerts.map(alert => <p className="alerts">{alert}</p>)
     
     return (
         <form onSubmit={handleSubmit}>
