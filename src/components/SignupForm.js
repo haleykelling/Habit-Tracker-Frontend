@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+
 
 const usersUrl = "http://localhost:3000/users"
 
-const SignupForm = ({toggleForm, setUser}) => {
+const SignupForm = ({setUser, history}) => {
     const [input, setInput] = useState({})
     const [alerts, setAlerts] = useState([])
 
@@ -35,6 +37,7 @@ const SignupForm = ({toggleForm, setUser}) => {
                     setAlerts([])
                 }
             })
+            .then(() => history.push('/'))
     }
 
     const showAlerts = () => alerts.map(alert => <p>{alert}</p>)
@@ -59,7 +62,7 @@ const SignupForm = ({toggleForm, setUser}) => {
             </div>
             <input type="submit" value="Create User"/>
             { alerts.length ? showAlerts() : null }
-            <p>Already a member? <button onClick={toggleForm}>Log In</button></p>
+            <p>Already a member? <Link to="/login">Log In</Link></p>
         </form>
     );
 }
