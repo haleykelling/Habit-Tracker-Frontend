@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
+import '../App.css';
+
 const loginUrl = "http://localhost:3000/login"
 
 const LoginForm = ({setUser, setHabits, history}) => {
@@ -51,16 +53,15 @@ const LoginForm = ({setUser, setHabits, history}) => {
     const showAlerts = () => alerts.map(alert => <p className="alerts">{alert}</p>)
     
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Email Address:</label>
+        <form className="login" onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <label>Email Address:
                 <input type="email" name="email" onChange={handleInput} />
-            </div>
-            <div>
-                <label>Password:</label>
+            </label>
+            <label>Password:
                 <input type="password" name="password" onChange={handleInput} />
-            </div>
-            <input type="submit" value="Login"/>
+            </label>
+            <input className="submit" type="submit" value="Login"/>
             { alerts.length ? showAlerts() : null }
             <p>Not a member? <Link to="/signup">Sign Up</Link></p>
         </form>

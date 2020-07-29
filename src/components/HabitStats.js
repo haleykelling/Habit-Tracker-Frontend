@@ -1,9 +1,11 @@
 import React from 'react';
 
+import '../Dashboard.css';
+
 const HabitStats = () => {
     return (
-        <div>
-            
+        <div className="habit-stats">
+            <h2>All the stats</h2>
         </div>
     );
 }

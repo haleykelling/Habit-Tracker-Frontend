@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
+import '../App.css';
 
 const usersUrl = "http://localhost:3000/users"
 
@@ -51,24 +52,21 @@ const SignupForm = ({setUser, setHabits, history}) => {
     const showAlerts = () => alerts.map(alert => <p className="alerts">{alert}</p>)
     
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>First Name:</label>
+        <form className="signup" onSubmit={handleSubmit}>
+            <h2>New User</h2>
+            <label>First Name:
                 <input name="first_name" onChange={handleInput} />
-            </div>
-            <div>
-                <label>Last Name:</label>
+            </label>
+            <label>Last Name:
                 <input name="last_name" onChange={handleInput} />
-            </div>
-            <div>
-                <label>Email Address:</label>
+            </label>
+            <label>Email Address:
                 <input type="email" name="email" onChange={handleInput} />
-            </div>
-            <div>
-                <label>Password:</label>
+            </label>
+            <label>Password:
                 <input type="password" name="password" onChange={handleInput} />
-            </div>
-            <input type="submit" value="Create User"/>
+            </label>
+            <input className="submit" type="submit" value="Create User"/>
             { alerts.length ? showAlerts() : null }
             <p>Already a member? <Link to="/login">Log In</Link></p>
         </form>

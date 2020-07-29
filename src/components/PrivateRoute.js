@@ -16,7 +16,7 @@ const PrivateRoute = ({path, component: Component, user, habits, addHabit, delet
                     />
                 }} 
             />
-        : <Redirect to="/login" />
+        : <Redirect to="/welcome" />
 }
 
 export default PrivateRoute
