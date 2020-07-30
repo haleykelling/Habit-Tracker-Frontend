@@ -8,28 +8,34 @@ const HabitStats = ({habits}) => {
     
     const [labels, setLabels] = useState([])
     const [datasets, setDatasets] = useState([])
+    const barGraphData = {labels: labels, datasets: datasets}
     
+    useEffect(() => {
+        setBarGraphData()
+    }, [habits]);
+
     const setBarGraphData = () => {
-        defaults.global.defaultFontColor = 'white'
-        defaults.global.defaultFontFamily = 'Poppins'
+        defaults.global.defaultFontColor = 'black'
+        defaults.global.defaultFontFamily = 'Handlee'
+        defaults.global.defaultFontSize = '16'
         
         const labels = habits.map(habit => habit.name)
         setLabels(labels)
         const data = habits.map(habit => habit.current_streak)
         setDatasets([{
-            backgroundColor: 'white',
-            borderColor: 'red',
+            borderColor: 'hsl(201, 100%, 50%)',
+            backgroundColor: 'hsl(201, 100%, 85%, 0.8)',
             barPercentage: 1,
             borderWidth: 2,
             data: data
         }])
     }
     
-    useEffect(() => {
-        setBarGraphData()
-    }, [habits]);
-    
-    const barGraphData = {labels: labels, datasets: datasets}
+    const setTopThree = () => {
+        const sorted = habits.sort((a,b) => b.total - a.total)
+        const topThree = sorted.slice(0, 3)
+        return topThree.map(habit => <li><strong>{habit.name}</strong> - Completed {habit.total} times</li>)
+    }
     
     
     return (
@@ -44,17 +50,31 @@ const HabitStats = ({habits}) => {
                     maintainAspectRatio: false,
                     title:{
                         display: true, 
-                        text: 'Current Streaks',
-                        fontSize: 20
+                        text: 'Current Habit Streaks',
+                        fontSize: 20,
+                        fontFamily: 'Open Sans'
                     },
                     legend:{
                         display: false
-                    }
+                    },
+                    scales: {
+                        xAxes: [{
+                           gridLines: {
+                              color: 'hsl(215, 0%, 60%)'
+                           }
+                        }],
+                        yAxes: [{
+                           gridLines: {
+                              color: 'hsl(215, 0%, 60%)'
+                           }
+                        }]
+                   }
                 }}
             />
         </div>
         <div className="top-3">
-            <h3>Top 3 Alltime Habits</h3>
+            <h3>Top 3 Overall Habits</h3>
+            <ol>{setTopThree()}</ol>
         </div>
         </>
     );

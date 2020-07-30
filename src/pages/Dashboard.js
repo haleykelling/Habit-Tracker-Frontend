@@ -15,9 +15,10 @@ const Dashboard = ({user, habits, addHabit, deleteHabit, editHabit, markComplete
             </div>
             <HabitStats habits={habits}/>
             <div className="habit-section">
-                <CreateNewHabit addHabit={addHabit}/>
+                
                 <HabitContainer 
-                    habits={habits} 
+                    habits={habits}
+                    addHabit={addHabit} 
                     deleteHabit={deleteHabit} 
                     editHabit={editHabit}
                     markCompletedHabit={markCompletedHabit}

@@ -1,10 +1,11 @@
 import React from 'react';
 import HabitItem from './HabitItem';
+import CreateNewHabit from './CreateNewHabit'
 
 import '../Dashboard.css';
 
 
-const HabitContainer = ({habits, deleteHabit, editHabit, markCompletedHabit}) => {
+const HabitContainer = ({habits, addHabit, deleteHabit, editHabit, markCompletedHabit}) => {
     const habitsToDo = () => {
         let today = new Date()
         let formatted = today.toISOString().slice(0, 10)
@@ -35,12 +36,13 @@ const HabitContainer = ({habits, deleteHabit, editHabit, markCompletedHabit}) =>
 
     return (
         <div className="habit-container">
+            <h2>Daily Habits</h2>
+            <CreateNewHabit addHabit={addHabit}/>
             <div className="to-do">
-                <h2>Habits to Check Off Today</h2>
                 {showHabits(habitsToDo())}
             </div>
+            <h2>Completed</h2>
             <div className="done">
-                <h2>Completed Today</h2>
                 {showHabits(completedHabits())}
             </div>
         </div>

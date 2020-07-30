@@ -19,6 +19,8 @@ const CreateNewHabit = ({addHabit}) => {
         event.preventDefault()
         addHabit(input)
         setInput({})
+        event.target.reset()
+        toggleForm()
     }
 
     const toggleForm = () => setForm(!form)
@@ -28,13 +30,13 @@ const CreateNewHabit = ({addHabit}) => {
         <button className="show-form-button" onClick={toggleForm}>+</button>
         {form
         ?   <form className="create-form" onSubmit={handleSubmit}>
-                <h2>Create a New Habit</h2>
-                <label>Name:
+                <h3>Create a New Habit</h3>
+                <label>Title:
                     <input name="name" onChange={handleInput} />
                 </label>
                 <textarea 
                     name="details" 
-                    rows="2"
+                    rows="4"
                     placeholder="Description of habit..."
                     onChange={handleInput} 
                 />
