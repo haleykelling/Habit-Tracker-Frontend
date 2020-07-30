@@ -2,7 +2,18 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
 
-const PrivateRoute = ({path, component: Component, user, habits, addHabit, deleteHabit}) => {
+const PrivateRoute = (props) => {
+    const {
+        path, 
+        component: Component, 
+        user, 
+        habits, 
+        addHabit, 
+        deleteHabit, 
+        editHabit,
+        markCompletedHabit
+    } = props
+    
     return localStorage.token
         ? <Route 
                 exact 
@@ -13,6 +24,8 @@ const PrivateRoute = ({path, component: Component, user, habits, addHabit, delet
                         habits={habits} 
                         addHabit={addHabit}
                         deleteHabit={deleteHabit}
+                        editHabit={editHabit}
+                        markCompletedHabit={markCompletedHabit}
                     />
                 }} 
             />
