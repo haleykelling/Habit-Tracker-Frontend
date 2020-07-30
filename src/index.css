@@ -1,10 +1,13 @@
 @import '../node_modules/reset-css/reset.css';
-@import 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@200;400;700&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Open+Sans:wght@300;400;700&display=swap');
 
 
 
 body {
-  background: hsl(215, 25%, 40%);
-  font-family: 'Poppins', sans-serif;
+  background-image: url('./images/corkboard.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Open Sans', sans-serif;
 }
 

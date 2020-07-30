@@ -6,7 +6,7 @@ import HabitContainer from '../components/HabitContainer'
 
 import '../Dashboard.css';
 
-const Dashboard = ({user, habits, addHabit, deleteHabit}) => {
+const Dashboard = ({user, habits, addHabit, deleteHabit, editHabit, markCompletedHabit}) => {
     return(
         <div className="dashboard">
             <div className="header">
@@ -15,8 +15,14 @@ const Dashboard = ({user, habits, addHabit, deleteHabit}) => {
             </div>
             <HabitStats habits={habits}/>
             <div className="habit-section">
-                <CreateNewHabit addHabit={addHabit}/>
-                <HabitContainer habits={habits} deleteHabit={deleteHabit} />
+                
+                <HabitContainer 
+                    habits={habits}
+                    addHabit={addHabit} 
+                    deleteHabit={deleteHabit} 
+                    editHabit={editHabit}
+                    markCompletedHabit={markCompletedHabit}
+                />
             </div>
         </div>
     )

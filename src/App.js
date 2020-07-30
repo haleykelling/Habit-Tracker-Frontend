@@ -59,6 +59,33 @@ function App() {
       }
     })
   }
+
+  const editHabit = (id, changes) =>{
+    fetch(`${habitsUrl}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({habit: changes})
+    })
+  }
+  
+  const markCompletedHabit = (id) =>{
+    const habits_stayed_the_same = habits.filter(habit => habit.id !== id)
+    
+    fetch(`${habitsUrl}/${id}/completed`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+    })
+      .then(response => response.json())
+      .then(result => {
+        setHabits([...habits_stayed_the_same, result])
+      })
+  }
   
   return (
     <div className="App">
@@ -70,7 +97,9 @@ function App() {
           user={user} 
           habits={habits} 
           addHabit={addHabit}
-          deleteHabit={deleteHabit} 
+          deleteHabit={deleteHabit}
+          editHabit={editHabit}
+          markCompletedHabit={markCompletedHabit} 
         />
         <Route exact path="/welcome" render={() => <Welcome />} />
         <Route exact path="/login" render={(routerProps) => {
