@@ -72,7 +72,7 @@ function App() {
   }
   
   const markCompletedHabit = (id) =>{
-    const habits_stayed_the_same = habits.filter(habit => habit.id != id)
+    const habits_stayed_the_same = habits.filter(habit => habit.id !== id)
     
     fetch(`${habitsUrl}/${id}/completed`, {
       method: 'PATCH',
@@ -83,7 +83,6 @@ function App() {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result)
         setHabits([...habits_stayed_the_same, result])
       })
   }

@@ -3,12 +3,12 @@
 
 .dashboard {
     display: grid;
-    grid-template-columns: 150px auto 100px;
-    grid-template-rows: 50px 150px auto;
+    grid-template-columns: 175px auto 175px;
+    grid-template-rows: 50px 250px auto;
     grid-template-areas:
         "header header header"
-        "stats stats stats"
-        "sidebar habits habits";
+        "quote stats top-3"
+        "habits habits habits";
     height: 90vh;
     width: 98vw;
 }
@@ -135,8 +135,13 @@
 
 .habit-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
+}
+
+.to-do, .done {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .habit-card{
@@ -161,7 +166,7 @@
     transform: scale(1.01);
 }
 
-.habit-card h2 {
+.habit-card h3 {
     border-bottom: 1.2px ridge white;
     padding-bottom: 0.5rem;
     font-size: 22px;
@@ -189,6 +194,19 @@
     transform: scale(1.01);
 }
 
-.habit-stats {
+.done{
+    grid-area: done;
+}
+
+.motivation{
+    grid-area: quote;
+}
+
+.bar-graph{
     grid-area: stats;
+    background: hsl(215, 45%, 20%);
+}
+
+.top-3{
+    grid-area: top-3;
 }

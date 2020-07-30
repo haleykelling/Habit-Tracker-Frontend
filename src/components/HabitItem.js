@@ -21,7 +21,7 @@ const HabitItem = ({habit, deleteHabit, editHabit, markCompletedHabit}) => {
     
     return (
         <div className="habit-card">
-            <h2>{habit.name}</h2>
+            <h3>{habit.name}</h3>
             <p>{habit.details}</p>
             <p>Current Streak: {habit.current_streak}</p>
             <p>Longest Streak: {habit.longest_streak}</p>
