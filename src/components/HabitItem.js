@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FontAwesome from 'react-fontawesome'
 
 import '../Dashboard.css';
@@ -6,6 +6,10 @@ import '../Dashboard.css';
 
 const HabitItem = ({habit, deleteHabit, editHabit, markCompletedHabit}) => {
     
+    const [edit, setEdit] = useState(false)
+
+    const toggleEdit = () => setEdit(!edit)
+
     const handleDeleteClick = (event) => {
         event.preventDefault()
         deleteHabit(habit.id)
@@ -22,10 +26,16 @@ const HabitItem = ({habit, deleteHabit, editHabit, markCompletedHabit}) => {
     
     return (
         <div className="habit-card">
-            <h3>{habit.name}</h3>
-            <p>{habit.details}</p>
-            <p>Current Streak: {habit.current_streak}</p>
-            <p>Longest Streak: {habit.longest_streak}</p>
+            {edit
+                ? <form>
+                    <input name="name">{habit.name}</input>
+                    <input name="details">{habit.details}</input>
+                </form>
+                : <h3>{habit.name}</h3>
+                <p>{habit.details}</p>
+                <p>Current Streak: {habit.current_streak}</p>
+                <p>Longest Streak: {habit.longest_streak}</p>
+            }
             <span className="habit-card-buttons">
                 <button onClick={handleCompletedClick}>
                     <FontAwesome name="check-square" className="checkmark"/>
