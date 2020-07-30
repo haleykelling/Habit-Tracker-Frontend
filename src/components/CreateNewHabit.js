@@ -29,13 +29,16 @@ const CreateNewHabit = ({addHabit}) => {
         {form
         ?   <form className="create-form" onSubmit={handleSubmit}>
                 <h2>Create a New Habit</h2>
-                <div>
-                    <label>Name:</label>
+                <label>Name:
                     <input name="name" onChange={handleInput} />
-                    <label>Details:</label>
-                    <input name="details" onChange={handleInput} />
-                    <input type="submit" />
-                </div>
+                </label>
+                <textarea 
+                    name="details" 
+                    rows="2"
+                    placeholder="Description of habit..."
+                    onChange={handleInput} 
+                />
+                <input type="submit" />
             </form>
         : null 
         }
