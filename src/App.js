@@ -61,6 +61,8 @@ function App() {
   }
 
   const editHabit = (id, changes) =>{
+    const habitsStayedTheSame = habits.filter(habit => habit.id !== id)
+    
     fetch(`${habitsUrl}/${id}`, {
       method: 'PATCH',
       headers: {
@@ -69,10 +71,14 @@ function App() {
       },
       body: JSON.stringify({habit: changes})
     })
+      .then(response => response.json())
+      .then(result => {
+        setHabits([...habitsStayedTheSame, result])
+      })
   }
   
   const markCompletedHabit = (id) =>{
-    const habits_stayed_the_same = habits.filter(habit => habit.id !== id)
+    const habitsStayedTheSame = habits.filter(habit => habit.id !== id)
     
     fetch(`${habitsUrl}/${id}/completed`, {
       method: 'PATCH',
@@ -83,7 +89,7 @@ function App() {
     })
       .then(response => response.json())
       .then(result => {
-        setHabits([...habits_stayed_the_same, result])
+        setHabits([...habitsStayedTheSame, result])
       })
   }
   
