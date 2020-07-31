@@ -122,8 +122,12 @@
 
 .create-form input {
     margin-left: 0.5rem;
-    font-family: 'Handlee', cursive;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+}
+
+.create-form label {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .create-form textarea{
@@ -192,6 +196,7 @@
     flex-direction: column;
     justify-content: space-around;
     background-color: hsl(55, 100%, 85%);
+    transform: rotate(-1deg);
     box-shadow: 2px 2px 10px hsl(215, 100%, 0%, 0.8);
 }
 
@@ -245,8 +250,49 @@
     transition: transform 0.2s;
 }
 
+.habit-card-buttons button:focus{
+    outline: none;
+}
+
 .habit-card button:hover {
     transform: scale(1.01);
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 180px;
+}
+
+.edit-form input {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+}
+
+.edit-form textarea {
+    font-family: 'Handlee', cursive;
+}
+
+.edit-form input[type="submit"] {
+    font-family: 'Open Sans', sans-serif;
+    align-self: center;
+    color: black;
+    background: none;
+    padding: 0.3rem 0.8rem;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px dashed black;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.edit-form input[type="submit"]:hover{
+    transform: scale(1.1);
+}
+
+.edit-form textarea:focus, .edit-form input:focus{
+    outline:none;
 }
 
 .motivation{
