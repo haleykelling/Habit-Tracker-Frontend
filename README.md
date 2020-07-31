@@ -1,68 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Right Track
+Your personal habit tracking application!
 
-## Available Scripts
 
-In the project directory, you can run:
+## Table of Contents
+* [General Info](#general-info)
+* [Inspiration](#inspiration)
+* [Demonstration Video](#demonstration-video)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Example Code](#example-code)
+* [Features](#features)
+* [Status](#status)
+* [Contact](#contact)
+* [License](#license)
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## General Info
+Right Track was designed to allow users to build good habits and keep track of them. You can log in daily to see your habits that you are trying to form and complete them to build on your streaks. The app keeps track of your daily completion and records the number of days in a row you have completed each habit as a streak. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Inspiration 
+I was inspired by my desire to live a positive and fulfilled life. The only way to form good habits is to keep yourself accountable for doing them every day, which is what this app aims to help you do. 
 
-### `yarn test`
+## Demonstration Video
+[Right Track Youtube Demonstation]()
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies 
+* Ruby - version 2.6.1
+* Rails - version 6.0.3, >= 6.0.3.1
+* PostgreSQL
+* HTML5
+* CSS3 
+* React - version 16.13.1
+* Chart.js - version 2.9.3
+* React Router Dom - version 5.2.0
 
-### `yarn build`
+Gems:
+* Bcrypt - version 3.1.13
+* JWT - version 2.2.1
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Setup 
+To get Right Track installed and running clone the [backend Github Repository](https://github.com/haleykelling/Habit-Tracker-Backend) into your directory and bundle install:
+```ruby
+bundle install
+```
+After that make sure to create and migrate your database:
+```ruby
+rails db:create
+rails db:migrate
+```
+To get the backend server running execute:
+```ruby
+rails s
+```
+You will also need to clone this frontend Github Repository into your directory and run:
+```ruby
+npm install
+```
+Then, run the following command to launch the website:
+```ruby
+npm start
+```
+You will be prompted that something is already running on localhost:3000, so you can enter 'Y' to run on a different port.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can create a new user on the sign in page and get to tracking!
 
-### `yarn eject`
+## Example Code
+```javascript
+    const habitsToDo = () => {
+        let today = new Date()
+        let formatted = today.toISOString().slice(0, 10)
+        return habits.filter(habit => {
+            return habit.date_last_completed !== formatted
+        })
+    }
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    const setTopThree = () => {
+        const sorted = habits.sort((a,b) => b.total - a.total)
+        const topThree = sorted.slice(0, 3)
+        return topThree.map(habit => {
+            return <li><strong>{habit.name}</strong> - Completed {habit.total} times</li>
+        })
+    }
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
+Current Features:
+* Create a user and log in using bcrypt and jwt
+* Create, edit, and delete habits 
+* See your daily habits and mark them off when you have completed them for the day
+* See a daily inspirational quote to help you stay motivated
+* View your current habit streaks and your top three overall habits
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Technical Accomplishments:
+* I created the entire app using functional react components with hooks
+* I implemented full auth and used React Router to only enable you to get into the app if you have logged in
+* The entire app is a single page, utilizing conditional rendering and React Router to organize your view
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Future Features:
+* Receive notifications to help motivate you to complete your habits
+* Give recommendations for new habits to try
+* Add additional statistics and achievements to maintain a game-like atmosphere
+* Add friend capabilities to create a community of support
 
-## Learn More
+## Status
+The application is fully functional and ready to be enjoyed at current status. Future updates and improvements are still a possibility for future renditions.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
+Created by [Haley Kelling](https://www.linkedin.com/in/haley-kelling/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have any questions or comments feel free to reach out to me.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
