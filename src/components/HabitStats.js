@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Quote from './Quote'
 import {Bar, defaults} from 'react-chartjs-2';
 import { Redirect } from 'react-router-dom';
 
@@ -41,7 +42,7 @@ const HabitStats = ({habits}) => {
     return (
         <>
         <div className="motivation">
-            <p>Motivational quote here</p>
+            <Quote />
         </div>
         <div className="bar-graph">
             <Bar 

@@ -24,23 +24,24 @@ const LoginForm = ({setUser, setHabits, history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        event.target.reset()
         login(input)
         setInput({})
     }
     
-    const login = (user) => {
+    const login = (input) => {
         fetch(loginUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({user: user})
+            body: JSON.stringify({user: input})
         })
             .then(response => response.json())
             .then(response => {
                 if(response.errors){
                     setAlerts(response.errors)
-                } else {
+                } else if (response.token) {
                     setUser(response.user)
                     setHabits(response.habits)
                     localStorage.setItem('token', response.token)

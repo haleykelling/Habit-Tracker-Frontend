@@ -23,6 +23,7 @@ const SignupForm = ({setUser, setHabits, history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        event.target.reset()
         signUp(input)
         setInput({})
     }
@@ -39,7 +40,7 @@ const SignupForm = ({setUser, setHabits, history}) => {
             .then(response => {
                 if(response.errors){
                     setAlerts(response.errors)
-                } else {
+                } else if (response.token){
                     setUser(response.user)
                     setHabits(response.habits)
                     localStorage.setItem('token', response.token)
