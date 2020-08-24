@@ -12,7 +12,6 @@ Your personal habit tracking application!
 * [Features](#features)
 * [Status](#status)
 * [Contact](#contact)
-* [License](#license)
 
 
 ## General Info
@@ -22,7 +21,7 @@ Right Track was designed to allow users to build good habits and keep track of t
 I was inspired by my desire to live a positive and fulfilled life. The only way to form good habits is to keep yourself accountable for doing them every day, which is what this app aims to help you do. 
 
 ## Demonstration Video
-[Right Track Youtube Demonstation]()
+[Right Track Youtube Demonstration](https://youtu.be/5TJ_AdK0Vdc)
 
 ## Technologies 
 * Ruby - version 2.6.1
@@ -109,5 +108,5 @@ The application is fully functional and ready to be enjoyed at current status. F
 ## Contact
 Created by [Haley Kelling](https://www.linkedin.com/in/haley-kelling/).
 
-If you have any questions or comments feel free to reach out to me.
+If you have any questions or comments feel free to reach out to me!
 
